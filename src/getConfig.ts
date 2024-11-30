@@ -14,10 +14,10 @@ export const getConfig = (): Config => {
   // Parse the JSON data
   const pjson = JSON.parse(packageJsonContent);
 
-  let axlib = pjson?.axlib || {};
-  axlib.objectType = axlib.objectType || 'interface';
-  axlib.typePath = axlib.typePath;
-  axlib.apiPath = axlib.apiPath;
-  axlib.fetchType = axlib.fetchType;
-  return axlib;
+  let lib = pjson["realtime-api-types"] || {};
+  lib.objectType = lib.objectType || 'interface';
+  lib.typePath = lib.typePath;
+  lib.apiPath = lib.apiPath;
+  lib.fetchType = lib.fetchType;
+  return lib;
 };

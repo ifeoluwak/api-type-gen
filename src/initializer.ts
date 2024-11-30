@@ -101,7 +101,7 @@ class HandleDataWrapper {
         cwd = cwd.replace('.ts', '');
 
         sourceFiles.forEach((sourceFile) => {
-          if (sourceFile.getImportDeclaration('axlib')) {
+          if (sourceFile.getImportDeclaration('realtime-api-types')) {
             const text = sourceFile.getText();
             if (
               text &&

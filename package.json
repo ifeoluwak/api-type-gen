@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "typings": "dist/index.d.ts",
   "scripts": {
@@ -48,6 +48,6 @@
     "dist"
   ],
   "bin": {
-    "axlib": "dist/start.js"
+    "realtime-api-types": "dist/start.js"
   }
 }
