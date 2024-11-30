@@ -12,7 +12,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "api-type-gen",
+  "name": "realtime-api-types",
   "author": "Ifeoluwa King <ifeoluwaking24@gmail.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",

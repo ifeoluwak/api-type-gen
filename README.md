@@ -1,8 +1,8 @@
-# Api-Type-Gen
+# realtime-api-types
 
 The aim of this project is to take the pain away from trying to add types from your api responses.
 
-> **With this library, as you get responses from an api, it generates the type for you and saves it to your project**
+> **With this library, as you get responses from an api, it generates the type for you and saves it to your project, in real time.**
 >
 > **It also imports the new type and sets it as the return type of your api call. How awesome is that!**
 
@@ -17,7 +17,7 @@ This library was inspired by an old project I stumbled upon, called [MakeTypes](
 To get started, simply run:
 
 ```bash
-npm install api-type-gen
+npm install realtime-api-types
 ```
 
 ## Configuration
@@ -25,7 +25,7 @@ npm install api-type-gen
 There are some configs you need to set.  Go to your `package.json` and add the following:
 
 ```json
-"api-type-gen": {
+"realtime-api-types": {
     "objectType": "type",
     "typePath": "src/types",
     "apiPath": "src/apis",
@@ -45,7 +45,7 @@ export type Config = {
 
 ### Start Service
 
-To start the type generator service, run: `npx api-type-gen --init`.
+To start the type generator service, run: `npx realtime-api-types --init`.
 
 ## Code Sample & Usage
 
@@ -60,7 +60,7 @@ You can use property assignments or methods or both
 ```js
 // exercise.ts api file
 
-import {typedApiWrapper} from "api-type-gen"
+import {typedApiWrapper} from "realtime-api-types"
 import axios from 'axios'
 
 export const ExerciseApi = typedApiWrapper({
@@ -82,7 +82,7 @@ When type generation is successful, the file would be automatically updated to s
 ```js
 // updated exercise.ts api file
 
-import {typedApiWrapper} from "api-type-gen"
+import {typedApiWrapper} from "realtime-api-types"
 import axios from 'axios'
 import { GetExercises } from "../types/getExercises";
 import { GetExerciseById } from "../types/getExerciseById";
