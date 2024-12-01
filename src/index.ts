@@ -27,7 +27,7 @@ const typedApi = <T>(fn: FunctionType<T>) => {
       const response = await fn(...args);
       if (response) {
           // means this is a fetch request
-          if (response instanceof Promise) {
+          if (response instanceof Response) {
               isFetch = true;
               // fetch request does not throw error on 404, so we need to handle it
               // @ts-ignore
@@ -36,7 +36,7 @@ const typedApi = <T>(fn: FunctionType<T>) => {
                   throw new Error(response);
               }
               // @ts-ignore
-              data = await response?.json();
+              data = await response.json();
           }
           else {
               // @ts-ignore

@@ -8,9 +8,9 @@ The aim of this project is to take the pain away from trying to add types from y
 
 Just import the helper function and start the server. Thats all. You can then go on with your normal development flow.
 
-*This setup is meant only for development and not for production! You should not deploy this into your production pipeline.*
+***This setup is meant only for development and not for production! You should not deploy this into your production pipeline.***
 
-This library was inspired by an old project I stumbled upon, called [MakeTypes](https://github.com/jvilk/MakeTypes)
+This library was inspired by an old project I stumbled upon, called [MakeTypes](https://github.com/jvilk/MakeTypes).
 
 ## Installation
 
@@ -53,7 +53,7 @@ Wrap your apis in an object and wrap the object with `typedApiWrapper`.
 
 You should make your api methods pure, simply return the api call.
 
-You can use property assignments or methods or both
+You can use property assignments or methods or both.
 
 > Please note that when you're done developing, remove `typedApiWrapper` from this file completely.
 
@@ -113,9 +113,12 @@ The name of the type file is the same as the name of the **api method called**.
 
 The name of the type itself is the same as the name of the api method but in **pascal case**.
 
+## React Native or Expo
+For this to work with React native or Expo, make sure you follow their guide on how to enable api calls to localhost
+
 ## Limitations
 
-Cannot generate enums. This would require comparisons of each of the response fields from the same api call.
+Cannot generate enums from response.
 
 Cannot extend type from different type files. If the response from a call contains object that is similar to another type in another file, it cannot extend it. A new type will be generated in the new file.
 
@@ -123,7 +126,13 @@ Cannot give custom file names or type names. File name and type name is solely b
 
 Once a type has been generated for an api call, the type will not update with new api calls. You need to delete the previous generated type file to generate a new one.
 
-This library only serves to help you get started quickly and reduce time spent adding types to api calls. It does not solve all your type problems.
+*This library only serves to help you get started quickly and reduce time spent adding types to api calls. You might need to make some updates to the generated types sometimes. It does not solve all your type problems.*
+
+## Common Errors
+
+``Error: Could not find a directory at the specified path:``
+
+If you have a ***`rootDir`*** in your tsconfig, then make sure your ***`typePath`*** and ***`apiPath`*** reside there.
 
 ## Contributions
 
