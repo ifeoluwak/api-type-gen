@@ -65,14 +65,14 @@ import axios from 'axios'
 
 export const ExerciseApi = typedApiWrapper({
   // with fetch, property assignment style
-  getExercises: () => fetch("https://example.com"),
+  getExercises: () => fetch("https://example-api.com"),
     // with axios, method style
    getExerciseById(id: string) {
-    return axios.get(`https://example.com/${id}`);
+    return axios.get(`https://example-api.com/${id}`);
   },
   // api post method
   postExercise(data: any) {
-    return axios.post(`https://example.com`, data)
+    return axios.post(`https://example-api.com`, data)
   }
 });
 ```
@@ -120,6 +120,8 @@ Cannot generate enums. This would require comparisons of each of the response fi
 Cannot extend type from different type files. If the response from a call contains object that is similar to another type in another file, it cannot extend it. A new type will be generated in the new file.
 
 Cannot give custom file names or type names. File name and type name is solely based on the name of the api method.
+
+Once a type has been generated for an api call, the type will not update with new api calls. You need to delete the previous generated type file to generate a new one.
 
 This library only serves to help you get started quickly and reduce time spent adding types to api calls. It does not solve all your type problems.
 

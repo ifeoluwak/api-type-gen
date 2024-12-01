@@ -38,11 +38,11 @@
     "yargs": "^17.7.2"
   },
   "bugs": {
-    "url": "https://github.com/ifeoluwak/api-type-gen/issues"
+    "url": "https://github.com/ifeoluwak/realtime-api-types/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifeoluwak/api-type-gen.git"
+    "url": "git+https://github.com/ifeoluwak/realtime-api-types.git"
   },
   "files": [
     "dist"
