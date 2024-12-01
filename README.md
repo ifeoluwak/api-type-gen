@@ -65,7 +65,7 @@ import axios from 'axios'
 
 export const ExerciseApi = typedApiWrapper({
   // with fetch, property assignment style
-  getExercises: () => fetch("https://example-api.com"),
+  getExercises: () => fetch("https://example-api.com").then((res) => res.json()),
     // with axios, method style
    getExerciseById(id: string) {
     return axios.get(`https://example-api.com/${id}`);
@@ -90,7 +90,7 @@ import { PostExercise } from "../types/postExercise";
 
 export const ExerciseApi = typedApiWrapper({
   // with fetch, property assignment style
-  getExercises: (): Promise<GetExercises> => fetch("https://example-api.com"),
+  getExercises: (): Promise<GetExercises> => fetch("https://example-api.com").then((res) => res.json()),
     // with axios, method style
    getExerciseById(id: string): Promise<{ data: GetExerciseById }> {
     return axios.get(`https://example-api.com/${id}`);
