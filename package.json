@@ -1,5 +1,5 @@
 {
-  "version": "0.1.3",
+  "version": "0.1.5",
   "license": "MIT",
   "typings": "dist/index.d.ts",
   "scripts": {
@@ -49,5 +49,13 @@
   ],
   "bin": {
     "realtime-api-types": "dist/start.js"
-  }
+  },
+  "keywords": [
+    "realtime",
+    "api",
+    "types",
+    "typescript",
+    "type definitions",
+    "type generation"
+  ]
 }
