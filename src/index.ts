@@ -21,25 +21,23 @@ const typedApi = <T>(fn: FunctionType<T>) => {
     const typeName = fn.name;
 
     let data;
-    let isFetch = false;
 
     const response = await fn(...args);
     if (response) {
-        // means this is a fetch request
+        // means this is a pending fetch request
         if (response instanceof Response) {
-            isFetch = true;
             // fetch request does not throw error on 404, so we need to handle it
             // @ts-ignore
             if (!response.ok) {
               // @ts-ignore
-              throw new Error(`Response status: ${response.status}`);
+              throw new Error(response);
             }
             // @ts-ignore
             data = await response.json();
         }
         else {
             // @ts-ignore
-            data = response?.data;
+            data = response?.data || response;
         }
         if (data) {
           setTimeout(() => {
@@ -56,7 +54,9 @@ const typedApi = <T>(fn: FunctionType<T>) => {
         }, 1000);
         }
     }
-    return isFetch ? data : response;
+    // return the whole response object if its not a fetch request
+    // @ts-ignore
+    return response?.data ? response : data;
   };
 };
 

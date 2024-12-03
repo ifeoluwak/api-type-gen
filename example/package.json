@@ -49,6 +49,6 @@
     "fetchType": "fetch"
   },
   "devDependencies": {
-    "realtime-api-types": "^0.1.6"
+    "realtime-api-types": "^0.1.7"
   }
 }
