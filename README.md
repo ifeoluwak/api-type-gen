@@ -58,7 +58,9 @@ You can use property assignments or methods or both.
 > Please note that when you're done developing, remove `typedApiWrapper` from this file completely.
 
 ```js
-// exercise.ts api file
+// Example 
+
+// src/apis/exercise.ts api file
 
 import {typedApiWrapper} from "realtime-api-types"
 import axios from 'axios'
@@ -75,9 +77,18 @@ export const ExerciseApi = typedApiWrapper({
     return axios.post(`https://example-api.com`, data)
   }
 });
-```
 
-When type generation is successful, the file would be automatically updated to something like this:
+
+// src/App.tsx file
+
+useEffect(() => {
+   ExerciseApi.getExercises()
+}, [])
+
+```
+With this setup, whenever an api is called at any point in time, the service will intercept and try to generate type from the response.
+
+When type generation is successful, the example file above would be automatically updated to something like this:
 
 ```js
 // updated exercise.ts api file
@@ -107,24 +118,32 @@ export const ExerciseApi = typedApiWrapper({
 
 ## Naming Convention
 
-Note the naming convention.
+Note the naming convention in the example above.
 
-The name of the type file is the same as the name of the **api method called**.
+- The name of the type file is the same as the name of the **api method called**.
 
-The name of the type itself is the same as the name of the api method but in **pascal case**.
+- The name of the type itself is the same as the name of the api method but in **pascal case**.
+
+## Run Example
+
+- Clone the repo
+- Navigate to example folder from terminal
+- install dependencies
+- start the app: `yarn start`
+
 
 ## React Native or Expo
 For this to work with React native or Expo, make sure you follow their guide on how to enable api calls to localhost
 
 ## Limitations
 
-Cannot generate enums from response.
+- Cannot generate enums from response.
 
-Cannot extend type from different type files. If the response from a call contains object that is similar to another type in another file, it cannot extend it. A new type will be generated in the new file.
+- Cannot extend type from different type files. If the response from a call contains object that is similar to another type in another file, it cannot extend it. A new type will be generated in the new file.
 
-Cannot give custom file names or type names. File name and type name is solely based on the name of the api method.
+- Cannot give custom file names or type names. File name and type name is solely based on the name of the api method.
 
-Once a type has been generated for an api call, the type will not update with new api calls. You need to delete the previous generated type file to generate a new one.
+- Once a type has been generated for an api call, the type will not update with new api calls. You need to delete the previous generated type file to generate a new one.
 
 *This library only serves to help you get started quickly and reduce time spent adding types to api calls. You might need to make some updates to the generated types sometimes. It does not solve all your type problems.*
 

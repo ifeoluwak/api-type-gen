@@ -32,16 +32,17 @@ const typedApi = <T>(fn: FunctionType<T>) => {
             // @ts-ignore
             if (!response.ok) {
               // @ts-ignore
-                throw new Error(response);
+              throw new Error(`Response status: ${response.status}`);
             }
             // @ts-ignore
             data = await response.json();
         }
         else {
             // @ts-ignore
-            data = response?.data || response;
+            data = response?.data;
         }
-        setTimeout(() => {
+        if (data) {
+          setTimeout(() => {
             fetch(`http://localhost:4141/`, {
                 method: 'POST',
                 headers: {
@@ -53,6 +54,7 @@ const typedApi = <T>(fn: FunctionType<T>) => {
                 }),
             });
         }, 1000);
+        }
     }
     return isFetch ? data : response;
   };

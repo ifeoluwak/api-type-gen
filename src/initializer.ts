@@ -88,9 +88,6 @@ class HandleDataWrapper {
               `See -> ${this.config.typePath}/${typeName}.ts\n`
             )
         );
-        spinner.start(
-          `Adding ${this.config.objectType} to ${typeName} in ${this.config.apiPath}/${typeName}.ts`
-        );
 
         // get the correct path to the new type file
         let cwd = relative(
@@ -103,6 +100,10 @@ class HandleDataWrapper {
         sourceFiles.forEach((sourceFile) => {
           if (sourceFile.getImportDeclaration('realtime-api-types')) {
             const text = sourceFile.getText();
+            const fileName = sourceFile.getBaseName();
+            spinner.start(
+              `Adding ${this.config.objectType} to ${typeName} in ${this.config.apiPath}/${fileName}.ts`
+            );
             if (
               text &&
               text.includes('typedApiWrapper') &&
@@ -154,14 +155,14 @@ class HandleDataWrapper {
                 spinner.succeed(
                   greenLog(`Type added to ${typeName} in -> `) +
                     chalk.dim.underline(
-                      `${this.config.apiPath}/${typeName}.ts\n`
+                      `${this.config.apiPath}/${fileName}.ts\n`
                     )
                 );
                 sourceFile.saveSync();
               } else {
                 spinner.fail(
                   chalk.red(
-                    `Could not add type to ${typeName} in -> ${this.config.apiPath}/${typeName}.ts\n`
+                    `Could not add type to ${typeName} in -> ${this.config.apiPath}/${fileName}.ts\n`
                   )
                 );
               }
